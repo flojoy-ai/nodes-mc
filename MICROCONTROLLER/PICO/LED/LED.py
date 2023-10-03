@@ -5,7 +5,7 @@ from flojoy import DataContainer, JobResultBuilder, flojoy
 @flojoy
 def LED(
     default: Optional[DataContainer] = None,
-    mode: str = 'on', 
+    mode: Literal["Toggle", "On", "Off", "Mock"] = "Toggle", 
 ) -> DataContainer:
     """The LED node toggles the LED on a Rasbperry Pico"
 
@@ -16,15 +16,16 @@ def LED(
     - off: turns the LED off
     - toggle: toggles the LED (on -> off, off -> on)
     """
-    if mode != "mock":
+    print("RUNNING LED NODE!")
+    if mode != "Mock":
         from machine import Pin # type: ignore
         led = Pin("LED", Pin.OUT)
 
-        if mode == "on":
+        if mode == "On":
             led.value(1)
-        elif mode == "off":
+        elif mode == "Off":
             led.value(0)
-        elif mode == "toggle":
+        elif mode == "Toggle":
             led.toggle()
     else:
         print("LED ACTIVATED")
