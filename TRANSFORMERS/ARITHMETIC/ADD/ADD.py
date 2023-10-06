@@ -1,17 +1,12 @@
 import numpy as np
 from flojoy import flojoy, OrderedPair, Scalar, Vector
-from nodes.TRANSFORMERS.ARITHMETIC.utils.arithmetic_utils import get_val
+from ..utils.arithmetic_utils import get_val, reduce
 
-def reduce(func, seq, initial):
-    result = initial
-    for item in seq:
-        result = func(result, item)
-    return result
 
 @flojoy
-def ADD(
-    a: OrderedPair | Scalar | Vector, b: list[OrderedPair | Scalar | Vector]
-) -> OrderedPair | Scalar | Vector:
+def ADD(a: OrderedPair | Scalar | Vector,
+        b: list[OrderedPair | Scalar | Vector]
+        ) -> OrderedPair | Scalar | Vector:
     """The ADD node adds two or more numeric arrays, matrices, dataframes, or constants element-wise.
 
     When a constant is added to an array or matrix, each element in the array or matrix will be increased by the constant value.
@@ -41,7 +36,7 @@ def ADD(
 
     initial = get_val(a)
     seq = map(lambda dc: get_val(dc), b)
-    y = reduce(lambda u, v: u+v, seq, initial)
+    y = reduce(lambda u, v: u + v, seq, initial)
 
     if isinstance(a, OrderedPair):
         return OrderedPair(x=a.x, y=y)
@@ -49,4 +44,3 @@ def ADD(
         return Vector(v=y)
     elif isinstance(a, Scalar):
         return Scalar(c=y)
-

@@ -48,7 +48,6 @@ def SINE(
     else:
         x = default.v
 
-
     if waveform == "sine":
         y = Y0 + A * np.sin(2 * np.pi * F * x + phase)
 

@@ -3,6 +3,7 @@ from flojoy.job_result_builder import JobResultBuilder
 import time
 from typing import Any, Optional, cast
 
+
 @flojoy
 def TIMER(
     default: Optional[DataContainer] = None,
