@@ -21,7 +21,7 @@ def GPIO_OUT(
     """
     from machine import Pin  # type: ignore
 
-    selected = Pin(pin, Pin.OUT)
+    selected = Pin(int(pin), Pin.OUT)
 
     if mode == "On":
         selected.value(1)
