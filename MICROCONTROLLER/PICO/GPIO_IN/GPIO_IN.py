@@ -2,12 +2,12 @@ from typing import Literal, Optional, cast
 from flojoy import DataContainer, JobResultBuilder, flojoy, Scalar
 
 @flojoy
-def GPIO_OUT(
+def GPIO_IN(
     default: Optional[DataContainer] = None,
     pin: Literal[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
                     18, 19, 20, 21, 22, 26, 27, 28] = 1,
     mode: Literal["Pull Down", "Pull Up"] = "Pull Down",
-) -> DataContainer:
+) -> Scalar:
     """The GPIO_IN node tracks input from the specified pin \
         on a Rasbperry Pico. This is a GPIO (General Purpose Input/Output).
 
