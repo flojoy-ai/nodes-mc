@@ -23,5 +23,5 @@ def GPIO_IN(
     read_from = Pin(int(pin), Pin.IN, Pin.PULL_DOWN) if mode == "Pull Down" else Pin(int(pin), Pin.IN, Pin.PULL_UP)
 
     cur_value = read_from.value()    
-
+    print("GPIO IN:" + str(cur_value))
     return Scalar(c=cur_value)

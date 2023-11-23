@@ -26,7 +26,21 @@ def CONDITIONAL(
         Specifies the type of comparison to be performed between the two inputs. The default value is ">=".
     """
 
-    bool_ = compare_values(x.c[0], y.c[0], operator_type)
+    def compare_values(first_value: Any, second_value: Any, operator: str):
+        if operator == "<=":
+            return first_value <= second_value
+        elif operator == ">":
+            return first_value > second_value
+        elif operator == "<":
+            return first_value < second_value
+        elif operator == ">=":
+            return first_value >= second_value
+        elif operator == "!=":
+            return first_value != second_value
+        else:
+            return first_value == second_value
+
+    bool_ = compare_values(x.c, y.c, operator_type)
     print(bool_)
 
     data = None
@@ -44,17 +58,7 @@ def CONDITIONAL(
             [next_direction]).build(),
     )
 
+    
 
-def compare_values(first_value: Any, second_value: Any, operator: str):
-    if operator == "<=":
-        return first_value <= second_value
-    elif operator == ">":
-        return first_value > second_value
-    elif operator == "<":
-        return first_value < second_value
-    elif operator == ">=":
-        return first_value >= second_value
-    elif operator == "!=":
-        return first_value != second_value
-    else:
-        return first_value == second_value
+
+
